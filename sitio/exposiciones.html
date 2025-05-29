@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="es">
+<head>
+    <title>Exposiciones - Club de Ciencias</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="imganes club/icon.png" type="image/png">
+    <!-- Stylesheets-->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:400,500,600,700%7CPoppins:400%7CTeko:300,400">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header-styles.css">
+    <style>
+        /* Estilos para las tarjetas de presentación */
+        .presentation-card {
+            position: relative;
+            cursor: pointer;
+            height: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .presentation-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .presentation-card img {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+            width: 100%;
+        }
+        
+        .presentation-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Efecto de superposición */
+        .presentation-card .position-relative {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .presentation-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .presentation-card:hover .overlay {
+            opacity: 1;
+        }
+        
+        .presentation-card .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            z-index: 2;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .presentation-card:hover .overlay-text {
+            opacity: 1;
+        }
+        
+        .presentation-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1rem 0;
+            font-family: 'Poppins', sans-serif;
+            color: #2b2b2b;
+        }
+        
+        .presentation-description {
+            color: #666;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+        }
+        
+        .lead {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #2b2b2b;
+            margin-bottom: 1.5rem;
+        }
+        
+        .text-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .presentation-card:hover .card-body {
+            background: #f8f9fa;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .title-animation {
+            display: inline-block;
+            animation: slideIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-text {
+            animation: fadeInUp 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            transform-origin: center;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .text-animated-container {
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .presentation-card {
+            animation: fadeInUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+            opacity: 0;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .scale-in {
+            animation: scaleIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+        }
+
+        @keyframes highlight {
+            0% {
+                background-position: -100% 0;
+                opacity: 0;
+            }
+            100% {
+                background-position: 0% 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes highlight-2 {
+            0% {
+                background-position: -100% 0;
+            }
+            50% {
+                background-position: 0% 0;
+            }
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        .highlight-text {
+            position: relative;
+            color: #2b2b2b;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+        }
+
+        .highlight-text::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 247, 0, 0.2) 0%, rgba(255, 158, 0, 0.2) 100%);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .highlight-text:hover::after {
+            transform: scaleX(1);
+        }
+
+        .highlight-text-2 {
+            position: relative;
+            color: #2b2b2b;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+        }
+
+        .highlight-text-2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(76, 175, 80, 0.2) 0%, rgba(139, 195, 74, 0.2) 100%);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .highlight-text-2:hover::after {
+            transform: scaleX(1);
+        }
+
+        .title-highlight {
+            position: relative;
+            display: inline-block;
+            color: #2b2b2b;
+        }
+
+        .title-highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 15%;
+            background: linear-gradient(90deg, #FFC107 0%, #FF9800 100%);
+            z-index: -1;
+            opacity: 0;
+            animation: highlight 0.8s ease-out forwards;
+        }
+
+        /* Removemos los estilos que hacían el texto invisible */
+        .lead, .text-description {
+            color: #2b2b2b;
+        }
+
+        /* Estilos para el footer */
+        .page-footer {
+            background-color: #020F1F;
+            color: white;
+            padding: 50px 0;
+        }
+
+        .page-footer h5 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .page-footer p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-address {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-address li {
+            margin-bottom: 10px;
+        }
+
+        .footer-address a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-address a:hover {
+            color: white;
+        }
+
+        .link-phone, .link-email {
+            color: rgba(255, 255, 255, 0.8) !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link-phone:hover, .link-email:hover {
+            color: white !important;
+        }
+
+        .button-footer {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: #020F1F;
+            color: white;
+            border: 2px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button-footer:hover {
+            background-color: white;
+            color: #020F1F;
+        }
+
+        /* Estilos para el botón de volver arriba */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #020F1F;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s linear 0.3s, opacity 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .back-to-top.show {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0s;
+        }
+
+        .back-to-top:hover {
+            background-color: #041936;
+            transform: translateY(-3px);
+        }
+
+        .back-to-top svg {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Estilos para el preloader */
+        .preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: #ffffff;
+            transition: .3s all ease;
+        }
+
+        .preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-body {
+            text-align: center;
+        }
+
+        .preloader-body p {
+            font-size: 24px;
+            font-weight: 500;
+            color: #020F1F;
+            margin-top: 20px;
+        }
+
+        .cssload-container {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .cssload-speeding-wheel {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            border: 4px solid transparent;
+            border-radius: 50%;
+            border-top-color: #020F1F;
+            border-left-color: #020F1F;
+            animation: cssload-spin 1000ms infinite linear;
+        }
+
+        @keyframes cssload-spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
+            </div>
+            <p>Cargando...</p>
+        </div>
+    </div>
+    <div class="page">
+        <!-- Page Header-->
+        <header class="section page-header">
+            <!-- RD Navbar-->
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar rd-navbar-corporate" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-fixed" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-xxl-layout="rd-navbar-static" data-xxl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="106px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                    <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+                    <div class="rd-navbar-aside-outer">
+                        <div class="rd-navbar-aside">
+                            <!-- RD Navbar Panel-->
+                            <div class="rd-navbar-panel">
+                                <!-- RD Navbar Toggle-->
+                                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                                <!-- RD Navbar Brand-->
+                                <div class="rd-navbar-brand">
+                                    <!--Brand--><a class="brand" href="index.html"><img src="imganes club/icono.png" alt="" width="225" height="18"/></a>
+                                </div>
+                            </div>
+                            <div class="rd-navbar-aside-right rd-navbar-collapse">
+                                <ul class="rd-navbar-corporate-contacts">
+                                    <li>
+                                        <div class="unit unit-spacing-xs">
+                                            <div class="unit-left"><span class="icon fa fa-clock-o"></span></div>
+                                            <div class="unit-body">
+                                                <p>09:00<span>am</span> — 05:00<span>pm</span></p>
+                                            </div>
+                                        </div>
+                        </li>
+                                    <li>
+                                        <div class="unit unit-spacing-xs">
+                                            <div class="unit-left"><span class="icon fa fa-phone"></span></div>
+                                            <div class="unit-body"><a class="link-phone" href="tel:#">+1 323-913-4688</a></div>
+                                        </div>
+                        </li>
+                                </ul><a class="button button-md button-default-outline-2 button-ujarak" href="#">Miembros</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-main-outer">
+                        <div class="rd-navbar-main">
+                            <div class="rd-navbar-nav-wrap">
+                                <ul class="list-inline list-inline-md rd-navbar-corporate-list-social">
+                                    <li><a class="icon fa fa-facebook" href="#"></a></li>
+                                    <li><a class="icon fa fa-twitter" href="#"></a></li>
+                                    <li><a class="icon fa fa-google-plus" href="#"></a></li>
+                                    <li><a class="icon fa fa-instagram" href="#"></a></li>
+                                </ul>
+                                <!-- RD Navbar Nav-->
+                                <ul class="rd-navbar-nav">
+                                    <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Inicio</a></li>
+                                    <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">Sobre Nosotros</a></li>
+                                    <li class="rd-nav-item active"><a class="rd-nav-link" href="exposiciones.html">Exposiciones</a></li>
+                                    <li class="rd-nav-item"><a class="rd-nav-link" href="contact-us.html">Contacto</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- Breadcrumbs -->
+        <section class="breadcrumbs-custom-inset">
+            <div class="breadcrumbs-custom context-dark bg-overlay-60">
+                <div class="container">
+                    <h2 class="breadcrumbs-custom-title">Exposiciones</h2>
+                    <ul class="breadcrumbs-custom-path">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li class="active">Exposiciones</li>
+                    </ul>
+                </div>
+                <div class="box-position" style="background-image: url(imganes\ club/imagen-exposicion.png);"></div>
+        </div>
+        </section>
+    <!-- Main Content -->
+        <section class="section section-sm section-first bg-default">
+            <div class="container">
+                <h3 class="text-center title-animation title-highlight" style="font-family: 'Poppins', sans-serif; margin-bottom: 2rem; color: #2b2b2b;">Presentaciones y Exposiciones</h3>
+                <div class="text-center mb-5">
+                    <div class="text-animated-container">
+                        <p class="lead animate-text delay-1 scale-in highlight-text">En esta sección encontrarás nuestra biblioteca de diapositivas guía, cuidadamente elaboradas semana tras semana. Estos recursos didácticos han sido diseñados para enriquecer el proceso de aprendizaje y fomentar la comprensión de conceptos científicos de manera clara y estructurada.</p>
+                    </div>
+                    <div class="text-animated-container">
+                        <p class="text-description animate-text delay-2 scale-in highlight-text-2">Cada presentación representa el compromiso de nuestro club con la excelencia educativa y el desarrollo continuo del conocimiento científico. Te invitamos a explorar este valioso material que servirá como guía en tu viaje por el fascinante mundo de la ciencia.</p>
+                    </div>
+                </div>
+                <div class="row row-50 justify-content-center">
+            <!-- Card 1 -->
+                    <div class="col-md-4 animate-text delay-1">
+                        <div class="card presentation-card" onclick="window.location.href='https://prezi.com/view/F8EHXbMjAqj4VrGG2ugQ/'">
+                            <div class="position-relative">
+                                <img src="imganes club/diapositiva1.png" class="card-img-top" alt="Presentación 1">
+                                <div class="overlay">
+                                    <div class="overlay-text">Ver presentación</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="presentation-title">Presentación Prezi 1</h5>
+                                <p class="presentation-description">Haz clic para ver la presentación en Prezi</p>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- Card 2 -->
+                    <div class="col-md-4 animate-text delay-2">
+                        <div class="card presentation-card" onclick="window.location.href='https://prezi.com/view/2MGHnpG4MpF4qxNIOij6/'">
+                            <div class="position-relative">
+                                <img src="imganes club/diapositiva2.png" class="card-img-top" alt="Presentación 2">
+                                <div class="overlay">
+                                    <div class="overlay-text">Ver presentación</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="presentation-title">Presentación Prezi 2</h5>
+                                <p class="presentation-description">Haz clic para ver la presentación en Prezi</p>
+                            </div>
+                        </div>
+                    </div>
+
+            <!-- Card 3 -->
+                    <div class="col-md-4 animate-text delay-3">
+                        <div class="card presentation-card" onclick="window.location.href='https://prezi.com/view/jfZN3Bh0tBEOa0KpEml7/'">
+                            <div class="position-relative">
+                                <img src="imganes club/diapositiva3.png" class="card-img-top" alt="Presentación 3">
+                                <div class="overlay">
+                                    <div class="overlay-text">Ver presentación</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="presentation-title">Presentación Prezi 3</h5>
+                                <p class="presentation-description">Haz clic para ver la presentación en Prezi</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+            <!-- Card 4 - Canva Presentation -->
+                    <div class="col-md-4 animate-text delay-4">
+                        <div class="card presentation-card" onclick="window.location.href='https://www.canva.com/design/DAGgW09D0Kg/vgSRQ3qI3ZVKg3kVBoPEUQ/edit?utm_content=DAGgW09D0Kg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton'">
+                            <div class="position-relative">
+                                <img src="./imganes club/diapositiva4.png" class="card-img-top" alt="Presentación Canva">
+                                <div class="overlay">
+                                    <div class="overlay-text">Ver presentación</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="presentation-title">Presentación Canva</h5>
+                                <p class="presentation-description">Haz clic para ver la presentación en Canva</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Page Footer-->
+        <footer class="section page-footer">
+        <div class="container">
+                <div class="row row-50 justify-content-lg-between">
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="oh-desktop">
+                            <h5 class="text-spacing-30">Club de Ciencias</h5>
+                    <p>Fomentando la curiosidad científica en las nuevas generaciones.</p>
+                            <a href="contact-us.html" class="button-footer">Contáctanos</a>
+                        </div>
+                </div>
+                    <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+                        <div class="oh-desktop">
+                            <h5 class="text-spacing-30">Enlaces Rápidos</h5>
+                            <ul class="footer-address">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="about.html">Sobre Nosotros</a></li>
+                        <li><a href="exposiciones.html">Exposiciones</a></li>
+                        <li><a href="contact-us.html">Contacto</a></li>
+                    </ul>
+                </div>
+                    </div>
+                    <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4">
+                        <div class="oh-desktop">
+                            <h5 class="text-spacing-30">Contacto</h5>
+                            <ul class="footer-address">
+                                <li><a class="link-phone" href="tel:#">+1 323-913-4688</a></li>
+                                <li><a class="link-email" href="mailto:info@clubdeciencias.com">info@clubdeciencias.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        </div>
+    <!-- Botón de volver arriba -->
+    <a href="#" class="back-to-top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </a>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Script para mostrar/ocultar el botón de volver arriba
+        window.onscroll = function() {
+            var button = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.classList.add('show');
+            } else {
+                button.classList.remove('show');
+            }
+        };
+
+        // Scroll suave al hacer clic en el botón
+        document.querySelector('.back-to-top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html> 

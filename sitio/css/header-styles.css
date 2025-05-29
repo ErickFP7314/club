@@ -1,0 +1,96 @@
+/* Estilos unificados para la navegación en todas las páginas */
+.page-header,
+.rd-navbar-wrap,
+.rd-navbar-corporate,
+.rd-navbar-classic,
+.rd-navbar-modern {
+  background-color: #020F1F !important;
+}
+
+.rd-navbar-corporate .rd-navbar-nav > li > a,
+.rd-navbar-corporate .rd-navbar-corporate-contacts .link-phone,
+.rd-navbar-corporate .rd-navbar-corporate-contacts p,
+.rd-navbar-corporate .rd-navbar-corporate-list-social a,
+.rd-navbar-corporate .rd-navbar-dropdown a,
+.rd-navbar-corporate .rd-navbar-megamenu a,
+.rd-navbar-corporate .rd-navbar-nav > li.active > a,
+.rd-navbar-corporate .rd-navbar-nav > li.focus > a,
+.rd-navbar-corporate .rd-navbar-nav > li.opened > a,
+.rd-navbar-corporate .rd-navbar-submenu.focus > a,
+.rd-navbar-corporate .rd-navbar-submenu.opened > a,
+.rd-navbar-static .rd-nav-item.focus .rd-nav-link,
+.rd-navbar-static .rd-nav-item.opened .rd-nav-link,
+.rd-navbar-static .rd-nav-item.active .rd-nav-link,
+.rd-navbar-static .rd-nav-link,
+.rd-navbar-static .rd-nav-link:hover {
+  color: #ffffff !important;
+}
+
+.rd-navbar-corporate .rd-navbar-nav > li > a:hover,
+.rd-navbar-corporate .rd-navbar-corporate-list-social a:hover,
+.rd-navbar-corporate .rd-navbar-dropdown a:hover,
+.rd-navbar-corporate .rd-navbar-megamenu a:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.rd-navbar-static .rd-nav-item > .rd-navbar-submenu-toggle,
+.rd-navbar-corporate .rd-navbar-submenu-toggle {
+  color: #ffffff !important;
+}
+
+.rd-navbar-corporate .rd-navbar-panel,
+.rd-navbar-corporate .rd-navbar-brand,
+.rd-navbar-corporate .rd-navbar-aside-right,
+.rd-navbar-corporate .rd-navbar-nav-wrap,
+.rd-navbar-corporate .rd-navbar-main-outer,
+.rd-navbar-corporate .rd-navbar-aside-outer,
+.rd-navbar-corporate .rd-navbar-corporate-contacts,
+.rd-navbar-corporate .rd-navbar-corporate-list-social,
+.rd-navbar-corporate .rd-navbar-submenu,
+.rd-navbar-corporate .rd-navbar-submenu-toggle,
+.rd-navbar-corporate .rd-navbar-dropdown,
+.rd-navbar-corporate .rd-navbar-megamenu {
+  background-color: #020F1F !important;
+}
+
+.rd-navbar-corporate .button-default-outline-2 {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.rd-navbar-corporate .button-default-outline-2:hover {
+  color: #020F1F;
+  background-color: #ffffff;
+}
+
+.rd-navbar-toggle span,
+.rd-navbar-toggle span:before,
+.rd-navbar-toggle span:after,
+.rd-navbar-collapse-toggle span,
+.rd-navbar-collapse-toggle span:before,
+.rd-navbar-collapse-toggle span:after {
+  background-color: #ffffff !important;
+}
+
+.rd-navbar-corporate .rd-navbar-nav > li > a:before {
+  background-color: #ffffff;
+}
+
+.rd-navbar-static .rd-navbar-dropdown,
+.rd-navbar-static .rd-navbar-megamenu {
+  background-color: #020F1F;
+}
+
+/* Override cualquier otro estilo de navegación */
+.rd-navbar-static .rd-nav-item.focus > .rd-navbar-submenu-toggle::before,
+.rd-navbar-static .rd-nav-item.opened > .rd-navbar-submenu-toggle::before,
+.rd-navbar-static .rd-nav-item .rd-nav-link:hover + .rd-navbar-submenu-toggle::before {
+  color: #ffffff;
+}
+
+.rd-navbar-corporate .rd-navbar-aside-outer::after,
+.rd-navbar-corporate .rd-navbar-aside-outer::before,
+.rd-navbar-corporate .rd-navbar-main::before,
+.rd-navbar-corporate .rd-navbar-main::after {
+  background: #020F1F;
+} 
