@@ -1,0 +1,424 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400");
+.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}
+      /* Estilos base */
+      .page-header,
+      .rd-navbar-corporate,
+      .rd-navbar-aside,
+      .rd-navbar-main,
+      .rd-navbar-main-outer,
+      .rd-navbar-aside-outer,
+      .rd-navbar-nav-wrap,
+      .rd-navbar-panel,
+      .rd-navbar-brand,
+      .rd-navbar-aside-right,
+      .rd-navbar-corporate-contacts,
+      .rd-navbar-corporate-list-social,
+      .rd-navbar-submenu,
+      .rd-navbar-submenu-toggle,
+      .rd-navbar-dropdown,
+      .rd-navbar-megamenu {
+        background-color: #020F1F !important;
+      }
+
+      /* Enlaces y texto */
+      .rd-navbar-corporate .rd-navbar-nav > li > a,
+      .rd-navbar-corporate .rd-navbar-corporate-contacts .link-phone,
+      .rd-navbar-corporate .rd-navbar-corporate-contacts p,
+      .rd-navbar-corporate .rd-navbar-corporate-list-social a,
+      .rd-navbar-corporate .rd-navbar-dropdown a,
+      .rd-navbar-corporate .rd-navbar-megamenu a,
+      .rd-navbar-corporate .rd-navbar-nav > li.active > a,
+      .rd-navbar-corporate .rd-navbar-nav > li.focus > a,
+      .rd-navbar-corporate .rd-navbar-nav > li.opened > a,
+      .rd-navbar-corporate .rd-navbar-submenu.focus > a,
+      .rd-navbar-corporate .rd-navbar-submenu.opened > a {
+        color: #ffffff !important;
+      }
+
+      /* Estados hover */
+      .rd-navbar-corporate .rd-navbar-nav > li > a:hover,
+      .rd-navbar-corporate .rd-navbar-corporate-list-social a:hover,
+      .rd-navbar-corporate .rd-navbar-dropdown a:hover,
+      .rd-navbar-corporate .rd-navbar-megamenu a:hover {
+        color: #ffffff !important;
+        opacity: 0.8;
+      }
+
+      /* Elementos de navegación */
+      .rd-navbar-static .rd-nav-item.focus .rd-nav-link,
+      .rd-navbar-static .rd-nav-item.opened .rd-nav-link,
+      .rd-navbar-static .rd-nav-item.active .rd-nav-link,
+      .rd-navbar-static .rd-nav-link:hover {
+        color: #ffffff !important;
+      }
+
+      /* Toggles y botones */
+      .rd-navbar-toggle span,
+      .rd-navbar-toggle span:before,
+      .rd-navbar-toggle span:after,
+      .rd-navbar-collapse-toggle span,
+      .rd-navbar-collapse-toggle span:before,
+      .rd-navbar-collapse-toggle span:after {
+        background-color: #ffffff !important;
+      }
+
+      /* Líneas decorativas */
+      .rd-navbar-corporate .rd-navbar-nav > li > a:before {
+        background-color: #ffffff;
+      }
+
+      /* Botones outline */
+      .rd-navbar-corporate .button-default-outline-2 {
+        color: #ffffff;
+        border-color: #ffffff;
+      }
+
+      .rd-navbar-corporate .button-default-outline-2:hover {
+        color: #020F1F;
+        background-color: #ffffff;
+      }
+
+      /* Submenús y dropdowns */
+      .rd-navbar-static .rd-navbar-dropdown,
+      .rd-navbar-static .rd-navbar-megamenu {
+        background-color: #020F1F;
+      }
+
+      /* Indicadores de submenú */
+      .rd-navbar-static .rd-nav-item > .rd-navbar-submenu-toggle {
+        color: #ffffff;
+      }
+
+      .rd-navbar-static .rd-nav-item > .rd-navbar-submenu-toggle:hover {
+        color: #ffffff;
+        opacity: 0.8;
+      }
+
+      /* Estilos para el preloader */
+      .preloader {
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        background: #ffffff;
+        transition: .3s all ease;
+      }
+
+      .preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .preloader-body {
+        text-align: center;
+      }
+
+      .preloader-body p {
+        font-size: 24px;
+        font-weight: 500;
+        color: #020F1F;
+        margin-top: 20px;
+      }
+
+      .cssload-container {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+      }
+
+      .cssload-speeding-wheel {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        border: 4px solid transparent;
+        border-radius: 50%;
+        border-top-color: #020F1F;
+        border-left-color: #020F1F;
+        animation: cssload-spin 1000ms infinite linear;
+      }
+
+      @keyframes cssload-spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Estilos base */
+      .swiper-slide-caption {
+        position: relative;
+        z-index: 2;
+      }
+
+      .swiper-slide::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+      }
+
+      .swiper-slide {
+        position: relative;
+        height: 100vh;
+        background: url('imganes club/fondo1.gif') center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .swiper-slide video,
+      .swiper-slide img {
+        display: none;
+      }
+
+      @media (max-width: 767px) {
+        .swiper-slide {
+          height: 90vh;
+        }
+      }
+
+      /* Estilos para las imágenes con efectos hover */
+      .list-marked-2 .box-categories-list {
+        margin: 30px;
+      }
+
+      .list-marked-2 .box-categories-list li {
+        position: relative;
+        overflow: hidden;
+        border-radius: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Footer Styles */
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer ul li {
+  list-style: none;
+  margin: 0 5px;
+}
+
+footer ul li a .fa {
+  font-size: 40px;
+  color: #262626;
+  line-height: 80px;
+  transition: 0.5s;
+  padding-right: 14px;
+}
+
+footer ul li a span {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 30px;
+  color: #262626;
+  letter-spacing: 4px;
+  transition: 0.5s;
+}
+
+footer ul li a {
+  text-decoration: none;
+  display: absolute;
+  display: block;
+  width: 210px;
+  height: 80px;
+  background: #fff;
+  text-align: left;
+  padding-left: 20px;
+  transform: rotate(-30deg) skew(25deg) translate(0, 0);
+  transition: 0.5s;
+  box-shadow: -20px 20px 10px rgba(0, 0, 0, 0.5);
+}
+
+footer ul li a:before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: -20px;
+  height: 100%;
+  width: 20px;
+  background: #b1b1b1;
+  transform: 0.5s;
+  transform: rotate(0deg) skewY(-45deg);
+}
+
+footer ul li a:after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: -10px;
+  height: 20px;
+  width: 100%;
+  background: #b1b1b1;
+  transform: 0.5s;
+  transform: rotate(0deg) skewX(-45deg);
+}
+
+footer ul li a:hover {
+  transform: rotate(-30deg) skew(25deg) translate(20px, -15px);
+  box-shadow: -50px 50px 50px rgba(0, 0, 0, 0.5);
+}
+
+footer ul li:hover .fa {
+  color: #fff;
+}
+
+footer ul li:hover span {
+  color: #fff;
+}
+
+footer ul li:hover:nth-child(1) a {
+  background: #3b5998;
+}
+
+footer ul li:hover:nth-child(1) a:before {
+  background: #365492;
+}
+
+footer ul li:hover:nth-child(1) a:after {
+  background: #4a69ad;
+}
+
+footer ul li:hover:nth-child(2) a {
+  background: #00aced;
+}
+
+footer ul li:hover:nth-child(2) a:before {
+  background: #097aa5;
+}
+
+footer ul li:hover:nth-child(2) a:after {
+  background: #53b9e0;
+}
+
+footer ul li:hover:nth-child(3) a {
+  background: #dd4b39;
+}
+
+footer ul li:hover:nth-child(3) a:before {
+  background: #b33a2b;
+}
+
+footer ul li:hover:nth-child(3) a:after {
+  background: #e66a5a;
+}
+
+footer ul li:hover:nth-child(4) a {
+  background: #e4405f;
+}
+
+footer ul li:hover:nth-child(4) a:before {
+  background: #d81c3f;
+}
+
+footer ul li:hover:nth-child(4) a:after {
+  background: #e46880;
+}
+        margin: 20px;
+        transform-origin: center;
+      }
+
+      .list-marked-2 .box-categories-list li:hover {
+        transform: translateY(-15px) scale(1.03) rotate(2deg);
+        box-shadow: 0 20px 40px rgba(0, 179, 164, 0.4);
+      }
+
+      .list-marked-2 .box-categories-list li img {
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 30px;
+      }
+
+      .list-marked-2 .box-categories-list li:hover img {
+        transform: scale(1.15);
+        filter: brightness(1.2) contrast(1.1);
+      }
+
+      .list-marked-2 .box-categories-list li::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -150%;
+        width: 150%;
+        height: 100%;
+        background: linear-gradient(90deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,255,255,0.8) 50%,
+          rgba(255,255,255,0) 100%);
+        transform: skewX(-25deg);
+        transition: all 1s ease;
+        z-index: 2;
+      }
+
+      .list-marked-2 .box-categories-list li:hover::before {
+        left: 150%;
+        transform: skewX(-25deg) translateX(100%);
+      }
+
+      .list-marked-2 .box-categories-list li::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgba(0, 179, 164, 0.3), transparent);
+        opacity: 0;
+        transition: all 0.5s ease;
+      }
+
+      .list-marked-2 .box-categories-list li:hover::after {
+        opacity: 1;
+      }
+
+      .box-categories-title {
+        position: relative;
+        color: #020F1F;
+        margin-top: 20px;
+        font-size: 26px;
+        font-weight: 600;
+        transition: all 0.5s ease;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .list-marked-2 .box-categories-list li:hover .box-categories-title {
+        color: #00b3a4;
+        transform: scale(1.1) translateY(-5px);
+        text-shadow: 3px 3px 6px rgba(0, 179, 164, 0.3);
+      }
+
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+
+      .list-marked-2 .box-categories-list li:hover {
+        animation: float 3s ease-in-out infinite;
+      }
